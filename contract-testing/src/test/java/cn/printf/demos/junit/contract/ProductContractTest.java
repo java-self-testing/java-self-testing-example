@@ -48,7 +48,7 @@ public class ProductContractTest {
 
     @Test
     @State("Get all products")
-    public ProductController shouldGetAllProducts() {
+    public ProductController should_get_all_products() {
         Mockito.when(productService.getProducts()).thenReturn(Arrays.asList(
                 new Product() {{
                     setId(1L);
