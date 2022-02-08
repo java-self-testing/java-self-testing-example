@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>cn.prinf.demos</groupId>
+    <artifactId>java-self-testing-example</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+
+    <modules>
+        <module>spring</module>
+        <module>stubs</module>
+        <module>single</module>
+        <module>powermock</module>
+        <module>jmh</module>
+        <module>archunit</module>
+        <module>loggable</module>
+        <module>contract-testing</module>
+        <module>spring-batch</module>
+        <module>tdd</module>
+        <module>checkstyle</module>
+        <module>findbugs</module>
+        <module>dependency-check</module>
+        <module>junit5</module>
+        <module>api</module>
+        <module>jmeter</module>
+        <module>concurrence</module>
+        <module>test-report</module>
+        <module>feature-toggles</module>
+        <module>feature-toggles-spring</module>
+        <module>source-analysis2</module>
+        <module>javaagent</module>
+        <module>helloworld</module>
+    </modules>
+</project>

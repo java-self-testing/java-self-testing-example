@@ -1,0 +1,12 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    url:  jdbc:h2:mem:dmall_product_db
+    driver-class-name: org.h2.Driver
+  h2:
+    console:
+      enabled: true
+  flyway:
+    locations: "classpath:/db/migration"

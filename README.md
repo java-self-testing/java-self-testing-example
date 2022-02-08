@@ -1,2 +1,4 @@
-# java-self-testing-example
-Examples for java unit testing and X testing
+# 《Java 研发自测》源码
+
+
+

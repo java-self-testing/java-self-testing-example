@@ -1,0 +1,18 @@
+app:
+  features:
+    helloEchoEnabled: true
+
+togglz:
+  features:
+    HELLO_WORLD:
+      enabled: true
+      strategy: release-date
+      param:
+        date: '2021-09-10'
+        time: '10:10:00'
+    EXPERIMENT:
+      enabled: true
+      strategy: header-parameter
+      param:
+        key: 'experiment'
+        secret: 'ee455de4bdc70919d7c3e72a83fdac42'

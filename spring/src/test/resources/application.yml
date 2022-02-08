@@ -1,0 +1,17 @@
+server:
+  port: 8080
+
+logging.file: logs/application.log
+logging:
+  level:
+    org:
+      springframework:
+        web: DEBUG
+spring:
+  datasource:
+    url:  jdbc:h2:mem:unit_testing_db
+  h2:
+    console:
+      enabled: true
+mybatis:
+  mapper-locations: classpath:mapper/*.xml

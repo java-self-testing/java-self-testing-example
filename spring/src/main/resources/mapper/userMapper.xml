@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.prinf.demos.junit.spring.mapper.UserMapper">
+    <select id="selectAll" resultType="cn.prinf.demos.junit.spring.entity.User">
+        select * from `user`;
+    </select>
+
+    <insert id="insert"
+            parameterType="cn.prinf.demos.junit.spring.entity.User"
+            useGeneratedKeys="true"
+            keyProperty="id"
+    >
+       insert into `user`(
+            `username`,
+            `password`,
+            `createAt`,
+            `updateAt`
+             ) values(
+            #{user.username},
+            #{user.password},
+            #{user.createAt},
+            #{user.updateAt}
+       );
+    </insert>
+</mapper>
