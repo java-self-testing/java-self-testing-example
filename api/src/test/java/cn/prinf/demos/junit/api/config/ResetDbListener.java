@@ -13,7 +13,7 @@ public class ResetDbListener extends AbstractTestExecutionListener {
     public void beforeTestMethod(TestContext testContext) throws Exception {
         ResetDbService resetDbService =
                 testContext.getApplicationContext().getBean(ResetDbService.class);
-        resetDbService.backUp();
+        resetDbService.backup();
     }
 
     @Override

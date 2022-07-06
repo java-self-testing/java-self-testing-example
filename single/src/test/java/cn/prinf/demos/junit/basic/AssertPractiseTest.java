@@ -1,6 +1,5 @@
 package cn.prinf.demos.junit.basic;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
@@ -25,6 +24,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 public class AssertPractiseTest {
 
@@ -124,5 +124,11 @@ public class AssertPractiseTest {
     @Test
     public void should_assert_with_float_delta() {
         assertEquals(3.3333F, calculateAA(10F, 3F), 0.1);
+    }
+
+    @Test
+    public void should_be_true() {
+        String hello = "Hello";
+        assertTrue(hello.isEmpty());
     }
 }

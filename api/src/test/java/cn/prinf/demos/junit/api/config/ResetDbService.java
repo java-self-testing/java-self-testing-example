@@ -28,7 +28,7 @@ public class ResetDbService {
     private DataSource dataSource;
     private File tempFile;
 
-    public void backUp() throws Exception {
+    public void backup() throws Exception {
         this.getConnection();
         this.backupCustom();
     }
