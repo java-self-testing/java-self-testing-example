@@ -21,8 +21,8 @@ public class UserServiceTest {
     public void should_register() {
         UserRepository mockedUserRepository = mock(UserRepository.class);
         EmailService mockedEmailService = mock(EmailService.class);
-        EncryptionService mockedEncryptionService = spy(new EncryptionService());
-        UserService userService = new UserService(mockedUserRepository, mockedEmailService, mockedEncryptionService);
+        EncryptionService spiedEncryptionService = spy(new EncryptionService());
+        UserService userService = new UserService(mockedUserRepository, mockedEmailService, spiedEncryptionService);
 
         // given
         User user = new User("admin@test.com", "admin", "xxx");
@@ -31,7 +31,7 @@ public class UserServiceTest {
         userService.register(user);
 
         // then
-        verify(mockedEncryptionService).sha256(eq("xxx"));
+        verify(spiedEncryptionService).sha256(eq("xxx"));
         verify(mockedEmailService).sendEmail(
                 eq("admin@test.com"),
                 eq("Register Notification"),
