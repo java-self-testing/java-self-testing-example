@@ -45,7 +45,7 @@ public class ArgumentMatchersExampleTest {
     public void matchers_null() {
         List mockedList = mock(List.class);
         // 等价 isNull
-        when(mockedList.add(eq(null))).thenReturn(false);
+        when(mockedList.add(eq(null))).thenReturn(true);
 
         // 这里是在真实调用，传入字面量
         System.out.println(mockedList.add(null));
