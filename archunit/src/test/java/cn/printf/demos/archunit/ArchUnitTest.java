@@ -3,7 +3,7 @@ package cn.printf.demos.archunit;
 
 import com.tngtech.archunit.core.domain.JavaClasses;
 import com.tngtech.archunit.core.importer.ClassFileImporter;
-import com.tngtech.archunit.lang.ArchRule;
+import com.tngtech.archunit.library.Architectures;
 import org.junit.Test;
 
 import static com.tngtech.archunit.lang.syntax.ArchRuleDefinition.classes;
@@ -27,12 +27,14 @@ public class ArchUnitTest {
 
     @Test
     public void should_obey_MVC_architecture_rule() {
-        layeredArchitecture()
+        JavaClasses importedClasses = new ClassFileImporter().importPackages(this.getClass().getPackage().getName());
+        Architectures.LayeredArchitecture layeredArchitecture = layeredArchitecture()
                 .layer("Controller").definedBy("..controller..")
                 .layer("Service").definedBy("..service..")
                 .layer("Dao").definedBy("..dao..")
                 .whereLayer("Controller").mayNotBeAccessedByAnyLayer()
                 .whereLayer("Service").mayOnlyBeAccessedByLayers("Controller")
                 .whereLayer("Dao").mayOnlyBeAccessedByLayers("Service");
+        layeredArchitecture.check(importedClasses);
     }
 }
