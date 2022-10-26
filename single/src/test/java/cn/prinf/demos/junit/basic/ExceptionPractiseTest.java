@@ -23,12 +23,6 @@ public class ExceptionPractiseTest {
         assertEquals(3, divide(9, 0));
     }
 
-    @Test(expected = DivideByZeroException.class)
-    public void should_assert_exception_type_and_message() {
-        DivideByZeroException divideByZeroException = assertThrows(DivideByZeroException.class, () -> divide(9, 0));
-        assertEquals("divisor is zero", divideByZeroException.getMessage());
-    }
-
     @Test
     public void test_exception_by_try_catch() {
         try {
@@ -49,4 +43,9 @@ public class ExceptionPractiseTest {
         divide(9, 0);
     }
 
+    @Test
+    public void should_assert_exception_type_and_message() {
+        DivideByZeroException divideByZeroException = assertThrows(DivideByZeroException.class, () -> divide(9, 0));
+        assertEquals("divisor is zero", divideByZeroException.getMessage());
+    }
 }
