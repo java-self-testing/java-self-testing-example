@@ -19,7 +19,47 @@ public class UseCaseDesignPractiseTest {
     }
 
     @Test
-    public void should_be_true_if_value_is_MIN() {
+    public void should_be_false_if_value_is_MIN() {
+        // given
+        int inputValue = Integer.MIN_VALUE;
+        // when
+        boolean palindrome = isPalindrome(inputValue);
+        // then
+        assertFalse(palindrome);
+    }
+
+    @Test
+    public void should_be_true_if_value_is_zero() {
+        // given
+        int inputValue = 0;
+        // when
+        boolean palindrome = isPalindrome(inputValue);
+        // then
+        assertTrue(palindrome);
+    }
+
+    @Test
+    public void should_be_true_if_value_is_10() {
+        // given
+        int inputValue = 10;
+        // when
+        boolean palindrome = isPalindrome(inputValue);
+        // then
+        assertFalse(palindrome);
+    }
+
+    @Test
+    public void should_be_true_if_value_is_11() {
+        // given
+        int inputValue = 11;
+        // when
+        boolean palindrome = isPalindrome(inputValue);
+        // then
+        assertTrue(palindrome);
+    }
+
+    @Test
+    public void should_be_false_if_value_is_MAX() {
         // given
         int inputValue = Integer.MAX_VALUE;
         // when
@@ -36,6 +76,36 @@ public class UseCaseDesignPractiseTest {
         String result = simpleFizzBuzz(inputValue);
         // then
         assertEquals("fizz buzz", result);
+    }
+
+    @Test
+    public void should_return_fizz() {
+        // given
+        int inputValue = 3;
+        // when
+        String result = simpleFizzBuzz(inputValue);
+        // then
+        assertEquals("fizz", result);
+    }
+
+    @Test
+    public void should_return_buzz() {
+        // given
+        int inputValue = 5;
+        // when
+        String result = simpleFizzBuzz(inputValue);
+        // then
+        assertEquals("buzz", result);
+    }
+
+    @Test
+    public void should_return_null() {
+        // given
+        int inputValue = 7;
+        // when
+        String result = simpleFizzBuzz(inputValue);
+        // then
+        assertEquals(null, result);
     }
 
     public static String simpleFizzBuzz(int n) {

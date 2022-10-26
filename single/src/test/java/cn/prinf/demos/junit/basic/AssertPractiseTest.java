@@ -42,22 +42,26 @@ public class AssertPractiseTest {
         assertNotNull("should not be null", Integer.valueOf("10"));
     }
 
+    @Test
+    public void should_be_same() {
+        assertThat(Runtime.getRuntime(), sameInstance(Runtime.getRuntime()));
+    }
 
     @Test
-    public void should_be_certain_type() {
-        assertThat("", isA(String.class));
+    public void should_be_true() {
+        String hello = "Hello";
+        assertTrue(hello.isEmpty());
     }
 
     @Test
     public void should_start_with_hello() {
-
         assertThat(helloAndNow(), startsWith("Hello"));
     }
 
     /**
      * assert with hamcrest
      */
-
+    // =======================
     @Test
     public void assert_anything() {
         assertThat("hamcrest", anything());
@@ -88,7 +92,6 @@ public class AssertPractiseTest {
         assertThat("hamcrest", not(not(anything())));
     }
 
-
     @Test
     public void assert_equal() {
         assertThat("hamcrest", equalTo("hamcrest"));
@@ -99,15 +102,14 @@ public class AssertPractiseTest {
         assertThat("hamcrest", instanceOf(String.class));
     }
 
-
-    @Test
-    public void assert_be_same() {
-        assertThat(Runtime.getRuntime(), sameInstance(Runtime.getRuntime()));
-    }
-
     @Test
     public void assert_null() {
         assertThat(null, nullValue());
+    }
+
+    @Test
+    public void assert_same_instance() {
+        assertThat(Runtime.getRuntime(), sameInstance(Runtime.getRuntime()));
     }
 
     @Test
@@ -115,11 +117,7 @@ public class AssertPractiseTest {
         assertThat(Arrays.asList(1, 2, 3), hasItems(1, 2));
     }
 
-
-    @Test
-    public void should_get_error_for_null_input() {
-        contactString(null, "");
-    }
+    // =======================
 
     @Test
     public void should_assert_with_float_delta() {
@@ -127,8 +125,14 @@ public class AssertPractiseTest {
     }
 
     @Test
-    public void should_be_true() {
-        String hello = "Hello";
-        assertTrue(hello.isEmpty());
+    public void should_be_certain_type() {
+        assertThat("", isA(String.class));
     }
+
+    @Test
+    public void should_get_error_for_null_input() {
+        contactString(null, "");
+    }
+
+
 }
