@@ -18,7 +18,7 @@ public class ParameterizedPractiseTest {
                 {Integer.MIN_VALUE, false},
                 {0, true},
                 {5, true},
-                {10, false},
+                // 没有找到怎么在参数化用例中验证 null 值的方法，所以可以补充一个手动的测试
                 {11, true},
                 {Integer.MAX_VALUE, false}
         });
