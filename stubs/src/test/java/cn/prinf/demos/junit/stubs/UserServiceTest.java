@@ -2,7 +2,6 @@ package cn.prinf.demos.junit.stubs;
 
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
-import org.mockito.ArgumentMatcher;
 import org.mockito.MockingDetails;
 import org.mockito.Mockito;
 
@@ -19,8 +18,11 @@ public class UserServiceTest {
 
     @Test
     public void should_register() {
+        // 使用 Mockito 模拟三个对象
         UserRepository mockedUserRepository = mock(UserRepository.class);
+        // mock 方法
         EmailService mockedEmailService = mock(EmailService.class);
+        // spy 方法
         EncryptionService spiedEncryptionService = spy(new EncryptionService());
         UserService userService = new UserService(mockedUserRepository, mockedEmailService, spiedEncryptionService);
 
@@ -46,18 +48,6 @@ public class UserServiceTest {
     }
 
     @Test
-    public void get_mock_detail_info() {
-        EncryptionService mockedEncryptionService = mock(EncryptionService.class);
-
-        given(mockedEncryptionService.sha256(any()))
-                .willReturn("cd2eb0837c9b4c962c22d2ff8b5441b7b45805887f051d39bf133b583baf6860");
-
-        MockingDetails mockingDetails = Mockito.mockingDetails(mockedEncryptionService);
-        System.out.println(mockingDetails.isMock());
-        System.out.println(mockingDetails.getStubbings());
-    }
-
-    @Test
     public void bdd_style() {
         UserRepository mockedUserRepository = mock(UserRepository.class);
         EmailService mockedEmailService = mock(EmailService.class);
@@ -76,6 +66,19 @@ public class UserServiceTest {
         ArgumentCaptor<User> argument = ArgumentCaptor.forClass(User.class);
         verify(mockedUserRepository).saveUser(argument.capture());
         assertEquals("cd2eb0837c9b4c962c22d2ff8b5441b7b45805887f051d39bf133b583baf6860", argument.getValue().getPassword());
+    }
+
+
+    @Test
+    public void get_mock_detail_info() {
+        EncryptionService mockedEncryptionService = mock(EncryptionService.class);
+
+        given(mockedEncryptionService.sha256(any()))
+                .willReturn("cd2eb0837c9b4c962c22d2ff8b5441b7b45805887f051d39bf133b583baf6860");
+
+        MockingDetails mockingDetails = Mockito.mockingDetails(mockedEncryptionService);
+        System.out.println(mockingDetails.isMock());
+        System.out.println(mockingDetails.getStubbings());
     }
 
     @Test

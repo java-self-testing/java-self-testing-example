@@ -1,13 +1,10 @@
 package cn.prinf.demos.junit.stubs;
 
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
@@ -41,7 +38,7 @@ public class UserServiceAnnotationTest {
         verify(mockedEmailService).sendEmail(
                 eq("admin@test.com"),
                 eq("Register Notification"),
-                eq("Register Account successful! your username is admin"));
+                eq("Register account successful! your username is admin"));
 
         ArgumentCaptor<User> argument = ArgumentCaptor.forClass(User.class);
         verify(mockedUserRepository).saveUser(argument.capture());

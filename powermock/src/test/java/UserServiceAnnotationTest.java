@@ -19,8 +19,8 @@ import java.time.Instant;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.verify;
-
 @RunWith(PowerMockRunner.class)
+// 使用 PrepareForTest 让模拟行为在被测试代码中生效
 @PrepareForTest({UserService.class})
 public class UserServiceAnnotationTest {
 
@@ -37,22 +37,24 @@ public class UserServiceAnnotationTest {
 
     @Test
     public void should_register() {
-        Instant now = Instant.ofEpochSecond(1596494464);
+        // 模拟前生成一个 Instant 实例
+        Instant moment = Instant.ofEpochSecond(1596494464);
 
+        // 模拟并设定期望返回值
         PowerMockito.mockStatic(Instant.class);
-        PowerMockito.when(Instant.now()).thenReturn(now);
+        PowerMockito.when(Instant.now()).thenReturn(moment);
 
-        // given
+        // Given
         User user = new User("admin@test.com", "admin", "xxx", null);
 
-        // when
+        // When
         userService.register(user);
 
-        // then
+        // Then
         verify(mockedEmailService).sendEmail(
                 eq("admin@test.com"),
                 eq("Register Notification"),
-                eq("Register Account successful! your username is admin"));
+                eq("Register account successful! your username is admin"));
 
         ArgumentCaptor<User> argument = ArgumentCaptor.forClass(User.class);
         verify(mockedUserRepository).saveUser(argument.capture());
@@ -60,6 +62,6 @@ public class UserServiceAnnotationTest {
         assertEquals("admin@test.com", argument.getValue().getEmail());
         assertEquals("admin", argument.getValue().getUsername());
         assertEquals("cd2eb0837c9b4c962c22d2ff8b5441b7b45805887f051d39bf133b583baf6860", argument.getValue().getPassword());
-        assertEquals(now, argument.getValue().getCreateAt());
+        assertEquals(moment, argument.getValue().getCreateAt());
     }
 }
