@@ -19,13 +19,13 @@ public class NestedTest {
 
         @Test
         void first_test() {
-            System.out.println("this is first nested test");
+            System.out.println("this is the first nested test");
         }
 
 
         @Test
         void second_test() {
-            System.out.println("this is first nested test");
+            System.out.println("this is the second nested test");
         }
     }
 }
