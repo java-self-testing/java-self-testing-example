@@ -51,8 +51,8 @@ public class UserControllerTest {
                 .get("/users")
                 .accept(MediaType.APPLICATION_JSON);
 
-        ResultActions perform = this.mvc.perform(builder);
+        ResultActions actions = this.mvc.perform(builder);
         ResultMatcher okMatcher = status().isOk();
-        perform.andExpect(okMatcher);
+        actions.andExpect(okMatcher);
     }
 }

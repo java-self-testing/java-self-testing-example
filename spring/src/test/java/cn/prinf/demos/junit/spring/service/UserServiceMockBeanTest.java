@@ -1,15 +1,13 @@
-package cn.prinf.demos.junit.spring;
+package cn.prinf.demos.junit.spring.service;
 
 import cn.prinf.demos.junit.spring.entity.User;
 import cn.prinf.demos.junit.spring.mapper.UserMapper;
-import cn.prinf.demos.junit.spring.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.boot.test.mock.mockito.SpyBean;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -20,7 +18,8 @@ public class UserServiceMockBeanTest {
     @Autowired
     private UserService userService;
 
-    @Autowired
+    @MockBean
+    // 注意，要求 UserMapper 没有被定义过才能被模拟，由于这个项目有其它演示文件，无法做到
     private UserMapper userMapper;
 
     @Test

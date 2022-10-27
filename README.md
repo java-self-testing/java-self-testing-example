@@ -120,6 +120,12 @@ function should_return_hello_world(){
 }
 ```
 
+[Junit 5](https://github.com/linksgo2011/java-self-testing-example/tree/main/junit5)
+
+- HelloWorldTest.java Junit 5 基本示例
+- ExceptionPractiseTest.java 更方便的异常处理
+- NestedTest.java 嵌套测试示例
+
 ## 第 4 章 测试替身
 
 [Mock 和 Spy 的使用](https://github.com/linksgo2011/java-self-testing-example/tree/main/stubs) 
@@ -132,8 +138,27 @@ function should_return_hello_world(){
 
 [PowerMock](https://github.com/linksgo2011/java-self-testing-example/tree/main/powermock)
 
-- 模拟静态方法
+- UserServiceAnnotationTest.java 模拟静态方法
+- ConstructorTest.java 模拟构造方法
+- PrivateTest.java 模拟私有方法
+- WhiteBoxTest.java 反射工具类
 
+## 第 5 章 Spring 应用的测试
 
-## 第 5 章 测试替身
+[Spring 应用的测试](https://github.com/linksgo2011/java-self-testing-example/tree/main/spring) 
+
+测试目录下的文件说明：
+
+- service/UserServiceTest.java 只有必要 Bean 的 Spring 测试
+- ApplicationTest.java Spring Boot 测试示例
+- ApplicationWithJdbcTemplateTest.java 使用 JdbcTemplate 的 Spring Boot 测试示例
+- service/UserServiceMockBeanTest.java 使用 Bean 模拟的测试
+- ApplicationTestOnlyController.java Spring Boot 切片测试 WebMvcTest 示例
+- TestForMapper.java Mybatis Mapper 专用测试
+- TestForJson.java JSON 专用测试
+- controller/UserControllerTest.java 使用 MockMvc 的 API 测试
+- ReflectionTestUtilsTest.java 反射工具箱
+- PropertyTest.java Property 注入
+- OutputCaptureTest.java 控制台输出的文本捕获
+- embedded/SpringBaseTest 内嵌工具 Redis 的配置
 

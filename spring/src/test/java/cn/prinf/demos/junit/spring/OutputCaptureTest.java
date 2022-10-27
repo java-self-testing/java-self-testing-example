@@ -9,12 +9,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(OutputCaptureExtension.class)
 public class OutputCaptureTest {
-
     @Test
     public void test_capture(CapturedOutput output) throws Exception {
         System.out.println("Hello World!");
         assertThat(output).contains("World");
     }
-
-
 }

@@ -36,16 +36,16 @@ public class ConstructorTest {
 
     @Test
     public void should_log_message_when_registering() throws Exception {
-        // given
+        // Given
         User user = new User("admin@test.com", "admin", "xxx", null);
 
         LogService mockedLogService = mock(LogService.class);
         whenNew(LogService.class).withNoArguments().thenReturn(mockedLogService);
 
-        // when
+        // When
         userService.register(user);
 
-        // then
+        // Then
         Mockito.verify(mockedLogService).log(any());
 
         verifyNew(LogService.class).withNoArguments();

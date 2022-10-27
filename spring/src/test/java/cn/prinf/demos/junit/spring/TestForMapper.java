@@ -23,5 +23,6 @@ public class TestForMapper {
             setUpdateAt(Instant.now());
         }};
         userMapper.insert(user);
+        // 下面可以是一些断言
     }
 }
