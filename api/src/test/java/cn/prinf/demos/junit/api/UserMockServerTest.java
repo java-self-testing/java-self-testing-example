@@ -83,7 +83,7 @@ public class UserMockServerTest extends TestBase {
         stubFor(get("/redirect")
                 .willReturn(temporaryRedirect("/redirect-to")));
 
-        String response = restTemplate.getForObject("http://localhost:9090/redirect-to", String.class);
+        String response = restTemplate.getForObject("http://localhost:9090/redirect", String.class);
         Assertions.assertEquals(response, "new-url");
     }
 

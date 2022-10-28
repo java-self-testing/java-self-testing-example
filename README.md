@@ -162,3 +162,114 @@ function should_return_hello_world(){
 - OutputCaptureTest.java 控制台输出的文本捕获
 - embedded/SpringBaseTest 内嵌工具 Redis 的配置
 
+## 第 6 章 RESTful API 测试
+
+[RESTful API 测试](https://github.com/linksgo2011/java-self-testing-example/tree/main/api)
+
+测试目录下的文件说明：
+
+- config/MariaDB4jSpringConfiguration.java MariaDB4j的配置文件
+- config/ResetDbListener.java 重置和恢复数据库的方法
+- config/ResetDbService.java 重置和恢复的服务
+- TestBase.java REST Assured 的主要配置方法
+- controller/UserControllerTest.java REST Assured 基本使用
+- FileTest.java 文件处理的示例
+- 
+
+无法在一个项目中实现不同的鉴权例子，只贴了示例代码：
+
+使用 Header
+
+```java
+given().header("Authorization", "Basic YWRtaW46MTIzNDU2")
+```
+
+使用 auth 方法
+
+```java
+given().auth().basic("admin", "123456")
+```
+
+使用全局拦截器
+
+```java
+RestAssured.authentication = basic("admin", "123456");
+```
+
+token 鉴权设置示意：
+
+```java
+@Autowired
+private AuthorizeService authorizeService;
+private String token;
+
+...  
+
+@BeforeEach
+public void setup() {  
+    // 调用父类的初始化方法  
+    super.setup();  
+    // 设置一个默认测试用户  
+    ...   
+    this.token = authorizeService.login(User user);
+}
+
+@Test
+public void test() {    
+    given().contentType("application/json").header("Authorization","Bearer " + token);
+    ...
+}
+```
+
+Cookie 鉴权设置示意：
+
+```java
+// 1. 登录并留存 Cookies
+Map<String, String> cookies = given()
+  .contentType("application/json")
+  .body(Maps.of("email", "test@email.com", "password", "123456"))
+  .when().post("/authorizes")
+  .then().statusCode(201).extract().cookies();
+
+// 2. 使用 cookies 获取用户个人信息
+given()
+  .contentType("application/json")
+  .cookies(cookies)
+  .when().post("/authorizes/me")
+  .then().statusCode(200);
+```
+
+SessionFilter 示意：
+
+```java
+SessionFilter sessionFilter = new SessionFilter();
+given()
+  .contentType("application/json")
+  .filter(sessionFilter)
+  .body(Maps.of("email", "test@email.com", "password", "123456"))
+  .when().post("/authorizes")
+  .then().statusCode(201);
+```
+
+WireMock 的几个命令:
+
+启动
+
+```shell
+java -jar wiremock-jre8-standalone-2.28.0.jar
+```
+
+写入数据
+
+```shell
+curl -X POST \
+--data '{ "request": { "url": "/info.0.json", "method": "GET" }, "response": { "status": 200, "body": "{\"hello\":\"world\"}" }}' \
+http://localhost:8080/__admin/mappings/new
+```
+
+验证
+
+```shell
+curl http://localhost:8080/info.0.json
+```
+

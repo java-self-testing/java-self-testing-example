@@ -1,4 +1,4 @@
-package cn.prinf.demos.junit.api;
+package cn.prinf.demos.junit.api.strategy;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;

@@ -1,4 +1,4 @@
-package cn.prinf.demos.junit.api;
+package cn.prinf.demos.junit.api.strategy;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -9,31 +9,24 @@ import org.junit.jupiter.api.TestMethodOrder;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class BuyScenarioTest {
-    @BeforeAll
-    static void beforeAll() {
+    @Test
+    void buy_scenario_test() {
         // 这里进行通用的准备
-    }
-
-    @AfterAll
-    static void afterAll() {
+        shouldListProducts();
+        shouldGetProductDetail();
+        shouldAddProductToShoppingCart();
         // 这里进行通用的清理
     }
 
-    @Test
-    @Order(1)
-    void should_list_products() {
+    void shouldListProducts() {
         System.out.println("should_list_products");
     }
 
-    @Test
-    @Order(2)
-    void should_get_product_detail() {
+    void shouldGetProductDetail() {
         System.out.println("should_get_product_detail");
     }
 
-    @Test
-    @Order(3)
-    void should_add_product_to_shopping_cart() {
+    void shouldAddProductToShoppingCart() {
         System.out.println("should_add_product_to_shopping_cart");
     }
 }

@@ -1,0 +1,10 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "/info.0.json"
+  },
+  "response": {
+    "status": 200,
+    "body": "{\"month\":\"6\",\"num\":2472,\"link\":\"\",\"year\":\"2021\",\"news\":\"\",\"safe_title\":\"Fuzzy Blob\",\"transcript\":\"\",\"alt\":\"If there's no dome, how do you explain the irregularities the board discovered in the zoning permits issued in that area!?\",\"img\":\"https://imgs.xkcd.com/comics/fuzzy_blob.png\",\"title\":\"Fuzzy Blob\",\"day\":\"4\"}"
+  }
+}
