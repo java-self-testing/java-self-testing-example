@@ -174,7 +174,6 @@ function should_return_hello_world(){
 - TestBase.java REST Assured 的主要配置方法
 - controller/UserControllerTest.java REST Assured 基本使用
 - FileTest.java 文件处理的示例
-- 
 
 无法在一个项目中实现不同的鉴权例子，只贴了示例代码：
 
@@ -272,4 +271,33 @@ http://localhost:8080/__admin/mappings/new
 ```shell
 curl http://localhost:8080/info.0.json
 ```
+
+## 第 7 章 性能和并发安全
+
+生成 JMH 工程
+
+```java
+mvn archetype:generate \
+     -DinteractiveMode=false \
+     -DarchetypeGroupId=org.openjdk.jmh \
+     -DarchetypeArtifactId=jmh-java-benchmark-archetype \
+     -DgroupId=org.sample \
+     -DartifactId=test \
+     -Dversion=1.0
+```
+
+安装
+```java
+mvn clean install
+```
+
+运行测试
+```shell
+java -jar target/benchmarks.jar
+```
+
+[JMH JUnit 示例](https://github.com/linksgo2011/java-self-testing-example/tree/main/jmh)
+
+
+
 

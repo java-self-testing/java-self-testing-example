@@ -28,10 +28,9 @@ public class TestForJson {
             setCreateAt(Instant.now());
             setUpdateAt(Instant.now());
         }};
-        // 使用下面的断言可能因为时间跑不过，所以不能直接断言 JSON 文本，推荐下面的断言方法
+        // 使用下面的断言可能因为时间跑不过，所以不能直接断言 JSON 文本，推荐下面的 JsonPath 的断言方法
         assertEquals("{\"id\":0,\"username\":\"zhangsan\",\"password\":\"123456\",\"createAt\":\"2021-11-07T02:00:45.126Z\",\"updateAt\":\"2021-11-07T02:00:45.126Z\"}", this.objectMapper.writeValueAsString(user));
     }
-
 
     @Autowired
     private JacksonTester<User> userJacksonTester;
