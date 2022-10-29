@@ -286,7 +286,8 @@ mvn archetype:generate \
      -Dversion=1.0
 ```
 
-安装
+进入 test 目录后执行
+
 ```java
 mvn clean install
 ```
@@ -296,8 +297,53 @@ mvn clean install
 java -jar target/benchmarks.jar
 ```
 
+MyBenchmark 文件
+
+```java
+@BenchmarkMode(Mode.Throughput)
+@Warmup(iterations = 3)
+@Measurement(iterations = 5, time = 5, timeUnit = TimeUnit.SECONDS)
+@Threads(8)
+@Fork(1)
+@OutputTimeUnit(TimeUnit.MILLISECONDS)
+public class MyBenchmark {
+    @Benchmark
+    public void test_simple_string() {
+        String s = "Hello world!";
+        for (int i = 0; i < 10; i++) {
+            s += s;
+        }
+    }
+    @Benchmark
+    public void test_string_builder() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < 10; i++) {
+            sb.append(i);
+        }
+    }
+}
+```
+
 [JMH JUnit 示例](https://github.com/linksgo2011/java-self-testing-example/tree/main/jmh)
 
 
+[使用 Maven 运行 Jmeter 的示例](https://github.com/linksgo2011/java-self-testing-example/tree/main/jmeter)
 
+使用 Jar 启动 JMeter 
+
+```shell
+java -jar bin/ApacheJMeter.jar 
+```
+
+测试 API 的命令
+
+```shell
+curl http://localhost:8080/api/hello
+```
+
+JMeter
+
+```shell
+./bin/jmeter.sh -n -t hello.jmx -l output.jtl
+```
 
