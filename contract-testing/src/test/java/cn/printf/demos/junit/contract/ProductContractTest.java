@@ -42,6 +42,7 @@ public class ProductContractTest {
     @Before
     public void setUp() throws Exception {
         MockitoAnnotations.initMocks(this);
+        // 只启动单个的 Controller，这是为了加快测试运行的速度而使用了 MockMvc，如果不使用 MockMvc 可以使用 Spring Boot Testing 启动完整的上下文
         target.setControllers(productController);
         target.setPrintRequestResponse(true);
     }
