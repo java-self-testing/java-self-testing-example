@@ -141,7 +141,7 @@ pipeline {
             steps {
                 script {
                     if (PASSWORD != "PROD")
-                        error "SORRY, YOU DON'T HAS THE PASSWORD!"
+                        error "SORRY, YOU DON'T HAVE THE PASSWORD!"
                 }
                 sh 'env'
                 //  sh "./ci deploy"
