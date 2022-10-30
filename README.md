@@ -376,3 +376,84 @@ mvn verify
 - AvatarServiceTest.java 组合生成文本和生成图像的组合类
 - AvatarTextUtilTest.java 生成文本工具类 
 - ImageUtilTest.java 生成图像类
+
+## 第 9 章 测试工程化
+
+下载 Jenkins 文件
+
+```shell
+wget http://mirrors.jenkins.io/war-stable/latest/jenkins.war
+```
+
+启动
+
+```shell
+java -jar jenkins.war --httpPort=8080
+```
+
+示例流水线代码
+
+```jenkins
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello') {
+            steps {
+                echo 'Hello World'
+            }
+        }
+    }
+}
+
+```
+
+
+[常见流水线配置文件](https://github.com/linksgo2011/java-self-testing-example/tree/main/pipeline)
+
+流水线配置文件说明
+
+- Jenkinsfile.groovy 流水线基本示例
+- Jenkinsfile_parallel.groovy 并行流水线
+- Jenkinsfile_test_report.groovy 测试报告
+
+[测试报告示例](https://github.com/linksgo2011/java-self-testing-example/tree/main/test-report)
+
+用来创建测试覆盖率的项目在另外一个仓库。
+
+## 第 10 章 测试守护重构
+
+Arthas 的使用
+
+```shell
+wget https://arthas.aliyun.com/arthas-boot.jara
+```
+
+```shell
+java -jar arthas-boot.jar
+```
+
+[切面日志示例](https://github.com/linksgo2011/java-self-testing-example/tree/main/loggable)
+
+文件说明
+
+- HelloServiceTest.java 使用打印出来的日志文本进行测试
+
+[契约测试](https://github.com/linksgo2011/java-self-testing-example/tree/main/contract-testing)
+
+[Spring Batch 示例](https://github.com/linksgo2011/java-self-testing-example/tree/main/spring-batch)
+
+测试目录文件说明
+
+- BatchJobTest.java 
+- BatchStepTest.java 
+
+[简单的特性开关](https://github.com/linksgo2011/java-self-testing-example/tree/main/feature-toggles) 
+
+源码目录文件说明
+
+- BasicVersion.java 基本版本
+- InterfaceVersion.java 接口版本
+- ProviderVersion.java ProviderVersion 的版本
+
+[Spring 体系中的特性开关](https://github.com/linksgo2011/java-self-testing-example/tree/main/feature-toggles-spring) 主要使用 Spring 的列表注入多个 Bean 实现以及使用 Togglz 来实现特性开关
