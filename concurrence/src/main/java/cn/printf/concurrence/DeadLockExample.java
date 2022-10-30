@@ -1,6 +1,12 @@
 package cn.printf.concurrence;
 
 public class DeadLockExample {
+
+    // 手动运行该示例，并使用 jstack 查看死锁信息
+    public static void main(String[] args) {
+        startBusiness();
+    }
+
     public static void startBusiness() {
         DeadLockSimulator deadLockSimulator = new DeadLockSimulator();
         Thread thread1 = new Thread(deadLockSimulator, "thread-1");

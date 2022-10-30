@@ -347,3 +347,32 @@ JMeter
 ./bin/jmeter.sh -n -t hello.jmx -l output.jtl
 ```
 
+使用 Maven 执行 JMeter 
+
+```shell
+mvn verify 
+```
+
+[并发问题的示例代码](https://github.com/linksgo2011/java-self-testing-example/tree/main/concurrence)
+
+源码包目录下关键文件说明
+
+- SynchronizationCount.java 全局变量的原子性问题
+- ConcurrencyExample.java 使用 ArrayList 的一个并发问题
+- DeadLockExample.java 死锁示例
+- MemoryLeakExample.java 内存泄露的例子
+
+测试目录下关键文件说明
+
+- DeadLockTest.java 死锁测试
+- RunConcurrentlyTest.java 浸泡测试
+
+## 第 8 章 测试驱动开发
+
+[测试驱动开发示例](https://github.com/linksgo2011/java-self-testing-example/tree/main/tdd)
+
+测试目录文件说明
+
+- AvatarServiceTest.java 组合生成文本和生成图像的组合类
+- AvatarTextUtilTest.java 生成文本工具类 
+- ImageUtilTest.java 生成图像类

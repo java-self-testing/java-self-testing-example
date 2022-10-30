@@ -1,11 +1,11 @@
 package cn.printf.concurrence;
 
-public class SynchronizationCountExample {
+public class SynchronizationCount {
     static Integer count = 5;
 
     public static void main(String[] args) throws InterruptedException {
-        Thread t1 = new Thread(SynchronizationCountExample::count);
-        Thread t2 = new Thread(SynchronizationCountExample::count);
+        Thread t1 = new Thread(SynchronizationCount::count);
+        Thread t2 = new Thread(SynchronizationCount::count);
         t1.start();
         t2.start();
 
@@ -14,6 +14,6 @@ public class SynchronizationCountExample {
     }
 
     private static void count() {
-        SynchronizationCountExample.count = SynchronizationCountExample.count + 1;
+        SynchronizationCount.count = SynchronizationCount.count + 1;
     }
 }

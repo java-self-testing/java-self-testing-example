@@ -28,6 +28,6 @@ public class RunConcurrentlyTest {
 
     @AfterClass
     public static void annotatedTestRunsMultipleTimes() {
-        assertEquals(counter, 100000);
+        assertEquals(100000, counter);
     }
 }
