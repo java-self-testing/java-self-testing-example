@@ -457,3 +457,11 @@ java -jar arthas-boot.jar
 - ProviderVersion.java ProviderVersion 的版本
 
 [Spring 体系中的特性开关](https://github.com/linksgo2011/java-self-testing-example/tree/main/feature-toggles-spring) 主要使用 Spring 的列表注入多个 Bean 实现以及使用 Togglz 来实现特性开关
+
+## 第 11 章 测试框架的源码分析
+
+[source-analysis](https://github.com/linksgo2011/java-self-testing-example/tree/main/source-analysis) 该模块用于通过命令来启动 JUnit 从而找到测试的入口
+
+[source-analysis2](https://github.com/linksgo2011/java-self-testing-example/tree/main/source-analysis2) 该模块用于放置分析源码时的几个测试类
+
+
