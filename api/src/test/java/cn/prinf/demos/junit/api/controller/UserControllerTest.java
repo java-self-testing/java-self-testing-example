@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.hasItem;
+import static org.hamcrest.core.Is.is;
 
 class UserControllerTest extends TestBase {
 
@@ -15,9 +17,9 @@ class UserControllerTest extends TestBase {
                 .contentType("application/json")
                 .when()
                 .get("/users")
-                .then().statusCode(200);
-//                .body("$.size()", is(2))
-//                .body("name", hasItem("admin"));
+                .then().statusCode(200)
+                .body("$.size()", is(1))
+                .body("name", hasItem("admin"));
     }
 
     @Test

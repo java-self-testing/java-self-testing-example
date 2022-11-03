@@ -166,6 +166,20 @@ function should_return_hello_world(){
 
 [RESTful API 测试](https://github.com/linksgo2011/java-self-testing-example/tree/main/api)
 
+在这一章中，我们使用了 MariaDB4j 来实现数据库基础设施的自动化管理，该库依赖 libssl，可能有如下报错：
+
+```text
+Library not loaded: /usr/local/opt/openssl/lib/libssl.1.0.0.dylib
+```
+
+参考解决方法：
+
+```shell
+brew install rbenv/tap/openssl@1.0
+ln -sfn /usr/local/Cellar/openssl@1.0/1.0.2t /usr/local/opt/openssl
+```
+来源：https://stackoverflow.com/questions/59006602/dyld-library-not-loaded-usr-local-opt-openssl-lib-libssl-1-0-0-dylib
+
 测试目录下的文件说明：
 
 - config/MariaDB4jSpringConfiguration.java MariaDB4j的配置文件
@@ -464,4 +478,6 @@ java -jar arthas-boot.jar
 
 [source-analysis2](https://github.com/linksgo2011/java-self-testing-example/tree/main/source-analysis2) 该模块用于放置分析源码时的几个测试类
 
+[helloworld](https://github.com/linksgo2011/java-self-testing-example/tree/main/helloworld) 该模块用于生成应用项目，被用于验证 Java Agent
 
+[helloworld](https://github.com/linksgo2011/java-self-testing-example/tree/main/javaagent) Java Agent 示例
