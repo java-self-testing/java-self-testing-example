@@ -38,7 +38,7 @@ public class UserServiceAnnotationTest {
         verify(mockedEmailService).sendEmail(
                 eq("admin@test.com"),
                 eq("Register Notification"),
-                eq("Register account successful! your username is admin"));
+                eq("Register Account successful! your username is admin"));
 
         ArgumentCaptor<User> argument = ArgumentCaptor.forClass(User.class);
         verify(mockedUserRepository).saveUser(argument.capture());

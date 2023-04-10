@@ -82,7 +82,7 @@ public class UserServiceTest {
     }
 
     @Test
-    public void lambda_verify() {
+    public void lambda_verify_string_example() {
         EncryptionService mockedEncryptionService = mock(EncryptionService.class);
 
         given(mockedEncryptionService.sha256(any()))
@@ -91,5 +91,18 @@ public class UserServiceTest {
         mockedEncryptionService.sha256("xxx");
 
         verify(mockedEncryptionService).sha256(argThat(argument -> argument.equals("xxx")));
+    }
+
+    @Test
+    public void lambda_verify_object_example() {
+        UserRepository mockedUserRepository = mock(UserRepository.class);
+        User user = new User("admin@test.com", "admin", "xxx");
+        mockedUserRepository.saveUser(user);
+
+        verify(mockedUserRepository).saveUser(argThat((argument) -> {
+            return "admin@test.com".equals(argument.getEmail()) &&
+                    "admin".equals(argument.getUsername()) &&
+                    "xxx".equals(argument.getPassword());
+        }));
     }
 }
