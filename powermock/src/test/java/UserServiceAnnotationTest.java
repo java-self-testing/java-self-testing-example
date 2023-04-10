@@ -56,6 +56,7 @@ public class UserServiceAnnotationTest {
                 eq("Register Notification"),
                 eq("Register account successful! your username is admin"));
 
+        // 为了验证传入方法的参数是否正确，可以使用参数捕获器ArgumentCaptor来捕获传入方法的参数。
         ArgumentCaptor<User> argument = ArgumentCaptor.forClass(User.class);
         verify(mockedUserRepository).saveUser(argument.capture());
 
