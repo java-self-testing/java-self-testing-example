@@ -41,6 +41,7 @@
             <groupId>ch.vorburger.mariaDB4j</groupId>
             <artifactId>mariaDB4j</artifactId>
             <version>2.4.0</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>io.rest-assured</groupId>
