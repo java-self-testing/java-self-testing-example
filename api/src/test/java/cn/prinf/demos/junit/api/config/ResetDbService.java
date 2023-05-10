@@ -22,7 +22,7 @@ import java.sql.SQLException;
 @Service
 public class ResetDbService {
 
-    private static IDatabaseConnection conn;
+    private static IDatabaseConnection connection;
 
     @Autowired
     private DataSource dataSource;
@@ -40,30 +40,30 @@ public class ResetDbService {
 
     protected void backupCustom() {
         try {
-            QueryDataSet qds = new QueryDataSet(conn);
-            qds.addTable("user");
+            QueryDataSet queryDataSet = new QueryDataSet(connection);
+            queryDataSet.addTable("user");
             tempFile = new File("temp.xml");
-            FlatXmlDataSet.write(qds, new FileWriter(tempFile), "UTF-8");
+            FlatXmlDataSet.write(queryDataSet, new FileWriter(tempFile), "UTF-8");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
     void getConnection() throws DatabaseUnitException {
-        conn = new DatabaseConnection(DataSourceUtils.getConnection(dataSource));
+        connection = new DatabaseConnection(DataSourceUtils.getConnection(dataSource));
     }
 
     protected void reset() throws FileNotFoundException, DatabaseUnitException, SQLException {
         FlatXmlDataSetBuilder builder = new FlatXmlDataSetBuilder();
         builder.setColumnSensing(true);
-        IDataSet ds = builder.build(new FileInputStream(tempFile));
+        IDataSet dataSet = builder.build(new FileInputStream(tempFile));
 
-        DatabaseOperation.CLEAN_INSERT.execute(conn, ds);
+        DatabaseOperation.CLEAN_INSERT.execute(connection, dataSet);
     }
 
     protected void closeConnection() throws SQLException {
-        if (conn != null) {
-            conn.close();
+        if (connection != null) {
+            connection.close();
         }
     }
 }
