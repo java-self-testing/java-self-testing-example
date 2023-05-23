@@ -16,7 +16,7 @@ public class AvatarTextUtilTest {
     }
 
     @Test
-    public void should_generated_user_avatar_text_for_cn() {
+    public void should_generated_user_avatar_text_for_en() {
         User user = new User() {{
             setCnName(null);
             setEnName("Mike");
