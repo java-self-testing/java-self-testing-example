@@ -38,7 +38,7 @@ public class ImageUtil {
         int x = (width - fontSize * text.length()) / 2;
         graphics.drawString(text, x, y);
         graphics.dispose();
-        // 输出 jpg 图片
+        // 输出 jpeg 图片
         return bufferedImageToBase64(image);
     }
 
