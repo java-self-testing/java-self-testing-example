@@ -17,17 +17,15 @@ public class TogglzEchoController {
     public String hello3() {
         if (manager.isActive(HELLO_WORLD)) {
             return "Hello world3!";
-        } else {
-            return null;
         }
+        return null;
     }
 
     @RequestMapping("/hello4")
     public String hello4() {
         if (manager.isActive(EXPERIMENT)) {
             return "Hello world4!";
-        } else {
-            return null;
         }
+        return null;
     }
 }

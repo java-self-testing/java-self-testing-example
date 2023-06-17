@@ -14,8 +14,7 @@ public class EchoController {
     public String echo() {
         if (helloEchoEnabled) {
             return "Hello World!";
-        } else {
-            return null;
         }
+        return null;
     }
 }
