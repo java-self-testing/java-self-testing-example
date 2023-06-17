@@ -5,9 +5,9 @@ public class InterfaceVersion {
 
     public static void main(String[] args) throws InterruptedException {
         if (timerEnabled) {
-            new BasicEcho().echoHello();
-        } else {
             new TimerEcho().echoHello();
+        } else {
+            new BasicEcho().echoHello();
         }
     }
 
