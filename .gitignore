@@ -34,3 +34,6 @@ logs/
 
 temp.xml
 /business/src/main/generated/
+
+**/**/target/**
+**/.DS_Store
