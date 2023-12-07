@@ -2,13 +2,13 @@ package cn.printf.demos.tdd;
 
 import java.awt.*;
 
-import static cn.printf.demos.tdd.AvatarTextUtil.generatorDefaultAvatarText;
+import static cn.printf.demos.tdd.AvatarTextUtil.generateDefaultAvatarText;
 import static cn.printf.demos.tdd.ImageUtil.watermarkImage;
 
 public class AvatarService {
 
     public String generateUserDefaultAvatar(User user) {
-        String avatarText = generatorDefaultAvatarText(user);
+        String avatarText = generateDefaultAvatarText(user);
         if ("male".equals(user.getGender())) {
             return watermarkImage(avatarText, Color.BLUE);
         }

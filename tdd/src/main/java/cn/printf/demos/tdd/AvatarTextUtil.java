@@ -1,8 +1,7 @@
 package cn.printf.demos.tdd;
 
 public class AvatarTextUtil {
-
-    public static String generatorDefaultAvatarText(User user) {
+    public static String generateDefaultAvatarText(User user) {
         if (null != user.getCnName()) {
             String userName = user.getCnName();
             return userName.substring(userName.length() - 2);
