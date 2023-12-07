@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                git 'https://gitlab.com/nlin101/java-self-testing-demo-all.git'
+                git 'https://github.com/java-self-testing/java-self-testing-demo-report.git'
 
                 sh "mvn -Dmaven.test.failure.ignore=true clean package"
             }
